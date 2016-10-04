@@ -8,8 +8,9 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :nausea_rating
       t.integer :happiness_rating
       t.integer :tickets
-
+      t.integer :role
       t.timestamps null: false
+    end
   end
 
 end

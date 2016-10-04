@@ -11,5 +11,6 @@ class CreateRides < ActiveRecord::Migration
       t.integer :tickets
 
       t.timestamps null: false
+    end
   end
 end
