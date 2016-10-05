@@ -3,3 +3,7 @@ class Attraction < ActiveRecord::Base
   has_many :rides
   has_many :users, through: :rides
 end
+
+# ttraction is valid with a name, min_height, nausea_rating, happiness_rating, and ticket number
+# rspec ./spec/models/attraction_spec.rb:18 # Attraction has many rides
+# rspec ./spec/models/attraction_spec.rb:24 # Attraction has many users through rides
