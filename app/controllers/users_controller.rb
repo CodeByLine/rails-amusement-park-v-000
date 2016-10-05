@@ -24,8 +24,8 @@ class UsersController < ApplicationController
 
     def user_params
       params[:user][:role] ||= 0
-      
-      params.require(:user).permit(:name, :height, :nausea_rating, :happiness_rating, :tickets, :role)
+
+      params.require(:user).permit(:name, :height, :nausea, :happiness, :tickets, :role)
     end
 
 end
