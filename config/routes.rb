@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   root to: "static_page#index"
 
+  get "/signin", to: "sessions#new"  #users? or session
+
 end
