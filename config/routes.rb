@@ -7,6 +7,13 @@ Rails.application.routes.draw do
 
   root to: "static_page#index"
 
-  get "/signin", to: "sessions#new"  #users? or session
+  get "/signup", to: "users#new"
+  get '/login', to: "session#new"
+  post '/login' => 'sessions#create'
+
+  # post "/sessions/create", to: "sessions#create"
+
+
+  #users? or session
 
 end

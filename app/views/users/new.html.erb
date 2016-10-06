@@ -1,22 +1,20 @@
 
 <h1>Sign up here</h1>
 
-<%= form_for :user do |f| %>
+<%= form_for @user do |f| %>
 
-
-Name:
-  <%= f.label :name %><br>
+  <%= f.label :Name%>:<br>
   <%= f.text_field :name %><br>
-Height:
+Height (in inches):
   <%= f.label :height %><br>
   <%= f.text_field :height %><br>
-Tickets:
+How many tickets do you have?
   <%= f.label :tickets %><br>
   <%= f.text_field :tickets %><br>
-Nausea:
+How nauseous are you? (1-5 scale)
   <%= f.label :nausea %><br>
   <%= f.text_field :nausea %><br>
-Happiness:
+How happy are you? (1-5 scale)
   <%= f.label :happiness %><br>
   <%= f.text_field :happiness %><br>
 

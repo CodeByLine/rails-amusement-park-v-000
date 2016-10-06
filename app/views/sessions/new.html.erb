@@ -1,0 +1,13 @@
+<h1>Sign In Here: </h1>
+
+<%= form_for @user do |f| %>
+
+  <%= f.label :Name%>:<br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :passowrd %><br>
+  <%= f.text_field :password %><br>
+
+  <%= f.submit %>
+
+  <% end %>

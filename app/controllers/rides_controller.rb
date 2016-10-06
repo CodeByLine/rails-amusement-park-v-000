@@ -5,5 +5,9 @@ class RidesController < ApplicationController
     @ride = Ride.find(params[:id])
   end
 
+  def create
+
+  end
+
 
 end
