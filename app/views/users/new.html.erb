@@ -1,10 +1,15 @@
 
 <h1>Sign up here</h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, user_path do |f| %>
 
   <%= f.label :Name%>:<br>
   <%= f.text_field :name %><br>
+
+  <%= f.label :password %>:<br>
+  <%= f.password_field :password %><br>
+  Password Confirmation:</br> <%= f.password_field :password_confirmation%> <br>
+
 Height (in inches):
   <%= f.label :height %><br>
   <%= f.text_field :height %><br>
@@ -18,6 +23,6 @@ How happy are you? (1-5 scale)
   <%= f.label :happiness %><br>
   <%= f.text_field :happiness %><br>
 
-  <%= f.submit %>
+  <%= f.submit "Create User" %>
 
   <% end %>

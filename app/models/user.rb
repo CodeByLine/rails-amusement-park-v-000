@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   has_many :attractions, through: :rides
   has_secure_password
 
+  validates :name, :presence => true, :uniqueness => true #,:length => { :in => 6..12 }
+  # validates :password, :confirmation => true
+  # validates_length_of :password, :in => 6..12, :on => :create
   enum role: [:user, :admin]
 
   def mood

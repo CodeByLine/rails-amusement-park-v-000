@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
     # redirect_to users_path
     # if @user.save
-    #   redirect_to user_path
+      redirect_to user_path
     # else
     #   redirect_to new_user_path
     # end

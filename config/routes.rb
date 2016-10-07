@@ -4,10 +4,11 @@ Rails.application.routes.draw do
 
   resources :users
   resources :rides
+  resources :sessions
 
   root to: "static_page#index"
 
-  get "/signup", to: "users#new"
+
   get '/login', to: "session#new"
   post '/login' => 'sessions#create'
 
