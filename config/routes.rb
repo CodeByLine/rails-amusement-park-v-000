@@ -1,10 +1,28 @@
 Rails.application.routes.draw do
-  devise_for :users
-  devise_for :rides
+
+
+  # roots
+  root "static_pages#home"
+
+  # sessions
+  get "/signin", to: "sessions#new"
+  post "/sessions/create", to: "sessions#create"
+  delete "/signout", to: "sessions#destroy"
+
+  # rides
+  post "/rides/new", to: "rides#new"
+
+  resources :attractions
 
   resources :users
-  resources :rides
 
-  root to: "static_page#index"
+
+  # devise_for :users
+  # devise_for :rides
+  #
+  # resources :users
+  # resources :rides
+  #
+  # root to: "static_pages#home"
 
 end
