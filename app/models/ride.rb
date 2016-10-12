@@ -3,29 +3,48 @@ class Ride < ActiveRecord::Base
   belongs_to :attraction
   belongs_to :user
 
+
   def take_ride
-    # if user.height < attraction.min_height
-    #   return "Sorry. You are not tall enough to ride the #{attraction.name}."
-    # elsif user.tickets < attraction.tickets
-    #   return "Sorry. You do not have enough tickets to the #{attraction.name}."
-    # elseif
-      if user.height < attraction.min_height && user.tickets < attraction.tickets
-        return "Sorry. You do not have enough tickets the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
-      elsif user.height < attraction.min_height
-          return "Sorry. You are not tall enough to ride the #{attraction.name}."
-      elsif user.tickets < attraction.tickets
-          return "Sorry. You do not have enough tickets the #{attraction.name}."
-      end
-
-      tickets_remaining =  user.tickets - attraction.tickets
-      nausea_stats =   user.nausea + attraction.nausea_rating
-      happiness_stats = user.happiness + attraction.happiness_rating
-      user.update(:tickets => tickets_remaining, :nausea => nausea_stats, :happiness => happiness_stats)
+    enough_tickets, tall_enough = meet_requirements
+    if enough_tickets && tall_enough
+      start_ride
+    elsif tall_enough && !enough_tickets
+      "Sorry. " + ticket_issue
+    elsif enough_tickets && !tall_enough
+      "Sorry. " + height_issue
+    else
+      "Sorry. " + ticket_issue + " " + height_issue
+    end
   end
 
-  def tickets?
-      tickets_remaining =
-      user.update
+  def meet_requirements
+    enough_tickets, tall_enough = false
+    if self.user.tickets >= self.attraction.tickets
+      enough_tickets = true
+    end
+    if self.user.height >= self.attraction.min_height
+      tall_enough = true
+    end
+    return [enough_tickets, tall_enough]
   end
 
+  def start_ride
+    new_happiness = self.user.happiness + self.attraction.happiness_rating
+    new_nausea = self.user.nausea + self.attraction.nausea_rating
+    new_tickets =  self.user.tickets - self.attraction.tickets
+    self.user.update(
+      :happiness => new_happiness,
+      :nausea => new_nausea,
+      :tickets => new_tickets
+    )
+    "Thanks for riding the #{self.attraction.name}!"
+  end
+
+  def ticket_issue
+    "You do not have enough tickets the #{self.attraction.name}."
+  end
+
+  def height_issue
+    "You are not tall enough to ride the #{self.attraction.name}."
+  end
 end

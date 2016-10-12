@@ -7,11 +7,15 @@ class User < ActiveRecord::Base
   enum role: [:user, :admin]
 
   def mood
-    if  happiness > nausea
-      return "happy"
-    else
-      return "sad"
-    end
-  end
+     if self.happiness && self.nausea
+       mood = self.happiness - self.nausea
+       mood > 0 ? "happy" : "sad"
+     end
+   end
+
+   def num_of_rides
+     self.attractions.count
+   end
+
 
 end
