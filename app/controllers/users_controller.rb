@@ -1,9 +1,17 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  # def show
+  #   @message = params[:message] if params[:message]
+  #   @message ||= false
+  # end
+
   def show
-    @message = params[:message] if params[:message]
-    @message ||= false
+    if session[:user_id]
+      @user = User.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def new

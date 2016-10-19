@@ -14,6 +14,7 @@
       <td><strong>Tickets</strong></td>
       <td><strong>Details</strong></td>
     </tr>
+
     <% @attractions.each do |attraction| %>
       <tr>
         <td><img src="http://<%= attraction.name.gsub(" ", "") %>.jpg.to/" width="100"></td>
@@ -26,7 +27,8 @@
           <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
         <% end %>
       </tr>
-    <% end %>
+      <% end %>
+  
   </tbody>
 </table>
 <br>
