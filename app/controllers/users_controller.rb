@@ -16,10 +16,8 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         redirect_to user_path(@user), notice: 'Welcome to the theme park!'
-        # format.html { redirect_to user_path(@user), notice: "Welcome to the theme park!" }
       else
         render :new
-        # format.html { render :new }
       end
   end
 
