@@ -19,6 +19,7 @@ class UsersController < ApplicationController
       else
         render :new
       end
+
   end
 
 
@@ -51,6 +52,7 @@ class UsersController < ApplicationController
         :tickets,
         :happiness,
         :nausea,
+        :role,
         :admin
       )
     end

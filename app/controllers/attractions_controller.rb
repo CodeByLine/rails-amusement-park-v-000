@@ -7,11 +7,16 @@ class AttractionsController < ApplicationController
 
     def show
       # @ride = Ride.new
-      @user = current_user
+      @user = @current_user
     end
 
     def new
-      @attraction = Attraction.new
+      # if @user.role > 0
+        @attraction = Attraction.new
+      # else
+      #   "You don't have the privilege to create attractions."
+      #   redirect_to user_path
+      # end
     end
 
     def create
