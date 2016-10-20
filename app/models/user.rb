@@ -17,5 +17,8 @@ class User < ActiveRecord::Base
      self.attractions.count
    end
 
+   def admin
+     self.role == admin ? true : false
+   end
 
 end
