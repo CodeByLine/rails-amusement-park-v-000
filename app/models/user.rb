@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   enum role: [:user, :admin]
 
-  def mood
+   def mood
      if self.happiness && self.nausea
        mood = self.happiness - self.nausea
        mood > 0 ? "happy" : "sad"
@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
      self.attractions.count
    end
 
-   def admin
-     self.role == admin ? true : false
-   end
+  #  def admin
+  #    self.role == admin ? true : false
+  #  end
 
 end
