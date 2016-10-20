@@ -60,8 +60,7 @@ class UsersController < ApplicationController
         :tickets,
         :happiness,
         :nausea,
-        :role,
-        :admin
+        :role
       )
     end
 end
