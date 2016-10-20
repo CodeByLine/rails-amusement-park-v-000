@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   has_many :attractions, through: :rides
   has_secure_password
 
-  enum role: [:user, :admin]
-
   def mood
      if self.happiness && self.nausea
        mood = self.happiness - self.nausea

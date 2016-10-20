@@ -1,7 +1,7 @@
-<%= form_for @user do |f| %>
+<%= form_for(:user) do |f| %>
 
   <div class="field">
-    <%= f.label :name, "Select your name" %><br>
+    <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
 
