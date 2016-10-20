@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
     end
 
     def new
-      # @user = User.new
-      # @users = User.all
+      @user = User.new
+      @users = User.all
     end
 
     def create
