@@ -1,3 +1,4 @@
+require 'pry'
 class RidesController < ApplicationController
 
   def index
@@ -11,8 +12,9 @@ class RidesController < ApplicationController
     # @message = @ride.take_ride
     # redirect_to user_path(@ride.user, :message => @message)
   end
-
+  # binding.pry
   def create
+
     @user = User.find(params[:ride][:user_id])
     @ride = Ride.new(ride_params)
     message = @ride.take_ride

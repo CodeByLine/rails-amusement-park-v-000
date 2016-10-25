@@ -13,22 +13,12 @@ Rails.application.routes.draw do
 
   post '/attractions/:id/go_on_ride' => 'attractions#go_on_ride'
 
-  # rides
-  # post "/rides/new", to: "rides#new"
-  # post '/users/:id' => 'users#show'
-  # post '/users/:id/go_on_ride' => 'attractions#go_on_ride'
 
   resources :attractions
   resources :users
   resources :rides
 
 
-  # devise_for :users
-  # devise_for :rides
-  #
-  # resources :users
-  # resources :rides
-  #
-  # root to: "static_pages#home"
+
 
 end
