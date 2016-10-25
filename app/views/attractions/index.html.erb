@@ -20,7 +20,7 @@
         <td><img src="http://<%= attraction.name.gsub(" ", "") %>.jpg.to/" width="100"></td>
         <td><%= attraction.name %></td>
         <td><%= attraction.tickets %></td>
-        <% if @current_user.admin? %>
+        <% if current_user.admin? %>
           "if @current_user.admin?"
           <td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></td>
         <td><%= link_to "New Attraction", new_attraction_path %></td>

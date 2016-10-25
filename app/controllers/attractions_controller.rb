@@ -6,7 +6,7 @@ class AttractionsController < ApplicationController
     end
 
     def show
-      # @ride = Ride.new
+      @ride = Ride.new
       @user = @current_user
     end
 
@@ -20,14 +20,14 @@ class AttractionsController < ApplicationController
     end
 
     def create
-      @attraction = Attraction.new(attraction_params)
+      if @user.admin
+        @attraction = Attraction.new(attraction_params)
       # respond_to do |format|
-        if @attraction.save
-          redirect_to @attraction, notice: 'Attraction was successfully created.'
+        @attraction.save
+        redirect_to attraction_path(@attraction), notice: 'Attraction was created.'
           # format.html { redirect_to @attraction, notice: 'Attraction was successfully created.' }
-        else
-          render "new"
-          # format.html { render :new }
+        # else
+        #   "Huh?"
         end
     end
 
@@ -44,6 +44,13 @@ class AttractionsController < ApplicationController
           render :edit
           # format.html { render :edit }
         end
+    end
+
+    def go_on_ride
+      @user = current_user
+      ride = Ride.create(user_id: @user.id, attraction_id: params[:id])
+      flash[:notice] = ride.take_ride
+      redirect_to user_path(@user)
     end
 
     def destroy

@@ -24,6 +24,8 @@ class ApplicationController < ActionController::Base
     end
     # helper_method :current_user
 
+    # current_user.admin will basically equate to this: User.find(session[:user_id]).admin
+
     private
       def require_logged_in
         redirect_to root_path unless logged_in?

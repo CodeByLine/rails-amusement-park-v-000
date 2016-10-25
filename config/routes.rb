@@ -12,10 +12,11 @@ Rails.application.routes.draw do
 
   # rides
   post "/rides/new", to: "rides#new"
+  post '/attractions/:id' => 'users#show'
 
   resources :attractions
-
   resources :users
+  resources :rides
 
 
   # devise_for :users
