@@ -10,9 +10,13 @@ Rails.application.routes.draw do
   get "/signout", to: "sessions#destroy"
   post "/signout", to: "sessions#destroy"
 
+
+  post '/attractions/:id/go_on_ride' => 'attractions#go_on_ride'
+
   # rides
-  post "/rides/new", to: "rides#new"
-  post '/attractions/:id' => 'users#show'
+  # post "/rides/new", to: "rides#new"
+  # post '/users/:id' => 'users#show'
+  # post '/users/:id/go_on_ride' => 'attractions#go_on_ride'
 
   resources :attractions
   resources :users
