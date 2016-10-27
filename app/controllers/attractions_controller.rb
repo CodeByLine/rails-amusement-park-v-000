@@ -24,7 +24,7 @@ class AttractionsController < ApplicationController
       # if @user.admin
         @attraction = Attraction.new(attraction_params)
       # respond_to do |format|
-      if @attraction.save
+      if @attraction.save     # if @user.admin
         redirect_to attraction_path(@attraction), notice: 'Attraction was created.'
           # format.html { redirect_to @attraction, notice: 'Attraction was successfully created.' }
         else

@@ -1,29 +1,34 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # def show
-  #   @message = params[:message] if params[:message]
-  #   @message ||= false
-  # end
-
   def show
     if session[:user_id]
-      @user = User.find(params[:id])
+       @user = User.find(params[:id])
+       @message = params[:message] if params[:message]
+       @message ||= false
     else
-      redirect_to root_path
+       redirect_to root_path
     end
   end
+
+  # def show
+  #   if session[:user_id]
+  #     @user = User.find(params[:id])
+  #   else
+  #     redirect_to root_path
+  #   end
+  # end
 
   def new
     @user = User.new
   end
 
-  def create
-    @user = User.new(user_params)
+  def create   #removed 4 @user from this block-no impact
+    user = User.new(user_params)
     # respond_to do |format|
-      if @user.save
-        session[:user_id] = @user.id
-        redirect_to user_path(@user), notice: 'Welcome to the theme park!'
+      if user.save
+        session[:user_id] = user.id
+        redirect_to user_path(user), notice: 'Welcome to the theme park!'
       else
         render :new
       end
