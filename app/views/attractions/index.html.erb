@@ -23,12 +23,14 @@
         <% if current_user.admin? %>
 
           <td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></td>
-        <!-- <td><%= link_to "New Attraction", new_attraction_path %></td> -->
+
         <% else %>
           <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
     <% end %>
       </tr>
 
 <% end %>
+
   </tbody>
 </table>
+   <%= link_to "New Attraction", new_attraction_path if current_user.admin %>

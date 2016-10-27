@@ -21,14 +21,15 @@ class AttractionsController < ApplicationController
     end
 
     def create
-      if @user.admin
+      # if @user.admin
         @attraction = Attraction.new(attraction_params)
       # respond_to do |format|
-        @attraction.save
+      if @attraction.save
         redirect_to attraction_path(@attraction), notice: 'Attraction was created.'
           # format.html { redirect_to @attraction, notice: 'Attraction was successfully created.' }
-        # else
+        else
         #   "Huh?"
+          render :new
         end
     end
 
