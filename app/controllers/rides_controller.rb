@@ -7,16 +7,16 @@ class RidesController < ApplicationController
   def new
     # @ride = Ride.new
     @ride = Ride.create(:user_id => params[:user_id], :attraction_id => params[:attraction_id])
+     @message = @ride.take_ride
     redirect_to user_path(@ride.user)
   end
   # binding.pry
   def create
     @ride = Ride.create(:user_id => params[:user_id], :attraction_id => params[:attraction_id])
     # @ride =Ride.create(user_id, attraction_id)
-    redirect_to user_path
+    # redirect_to user_path
 
   end
-
 
   # @user = User.find(params[:user_id])
   # @attraction = Attraction.find(params[:attraction_id])
