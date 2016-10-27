@@ -203,20 +203,15 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
     click_link('See attractions')
     click_link("Go on #{@ferriswheel.name}")
     expect(current_path).to eq("/attractions/2")
+    # binding.pry
     expect(page).to have_button("Go on this ride")
   end
 
   it "clicking on 'Go on this ride' redirects to user show page" do
-
-# binding.pry
     click_link('See attractions')
     click_link("Go on #{@ferriswheel.name}")
-    # binding.pry
     click_button("Go on this ride")
-    # binding.pry
-    # check w current_path
     expect(current_path).to eq("/users/1")
-
   end
 
   it "clicking on 'Go on this ride' updates the users ticket number" do

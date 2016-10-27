@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
 
   post '/attractions/:id/go_on_ride' => 'attractions#go_on_ride'
-
+  post '/rides/new' => 'rides#new'
 
   resources :attractions
   resources :users
